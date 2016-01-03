@@ -9,7 +9,7 @@ var View = function($el) {
 
   this.lost = false;
   this.started = false;
-  this.counter = 1000;
+  this.counter = 0;
   this.obstacleInterval = 10;
 
   $(window).on("keydown", this.handleKeyEvent.bind(this));
