@@ -42,7 +42,7 @@ li {
   margin: 0px auto;
   background: transparent;
   position: relative;
-  outline: 1px solid black;
+  outline: 1px solid grey;
 }
 
 li.line {
@@ -59,6 +59,7 @@ li.dasher {
 
 li.wall {
   background: black;
+  outline: none;
 }
 
 .counter {

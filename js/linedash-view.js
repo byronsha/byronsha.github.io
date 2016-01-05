@@ -10,7 +10,7 @@ var View = function($el) {
   this.lost = false;
   this.started = false;
   this.counter = 0;
-  this.obstacleInterval = 10;
+  this.obstacleInterval = 9;
 
   $(window).on("keydown", this.handleKeyEvent.bind(this));
 }
@@ -66,6 +66,23 @@ View.prototype.renderBoard = function() {
   $counter.text(this.counter);
 };
 
+View.prototype.startMusic = function () {
+  var music = "<embed src='./music/Hindsight.mp3' autostart='true' loop='true' hidden='true'>";
+  var musicElement = $(music);
+  this.$el.append(musicElement);
+};
+
+View.prototype.stopMusic = function () {
+  var $musicElement = $("embed");
+  $musicElement.remove();
+};
+
+View.prototype.playGameOverSound = function () {
+  var sound = "<embed src='./music/gameover.mp3' autostart='true' hidden='true'>";
+  var soundElement = $(sound);
+  this.$el.append(soundElement);
+};
+
 View.prototype.showControls = function () {
   var $div = $("<div>");
   $div.html("<h1>Linedash</h1>Enter: start/restart<br/>Spacebar: change sides");
@@ -89,7 +106,12 @@ View.prototype.step = function() {
 View.prototype.gameover = function() {
   this.lost = true;
   this.showControls();
+  this.stopMusic();
+
+  // this.playGameOverSound();
+
   clearInterval(this.gameFrames);
+
   var $ul = $("ul");
   $ul.addClass("pause");
 };
@@ -97,7 +119,9 @@ View.prototype.gameover = function() {
 View.prototype.handleKeyEvent = function(e) {
   if (!this.started && e.keyCode === 13) {
     this.gameFrames = setInterval(this.step.bind(this), 35);
+    this.startMusic();
     this.started = true;
+
     $("div").remove();
     var $ul = $("ul");
     $ul.addClass("rotate");
