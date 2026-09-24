@@ -1,0 +1,1 @@
+{"name":"Pokédex","short_name":"Pokédex","description":"A Gen 1 anime–style Pokédex built on PokéAPI.","start_url":"/pokedex/","display":"standalone","background_color":"#121110","theme_color":"#dc0a2d","lang":"en","scope":"/pokedex/","icons":[{"src":"favicon.svg","sizes":"any","type":"image/svg+xml","purpose":"any"}]}
